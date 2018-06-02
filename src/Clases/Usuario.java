@@ -1,5 +1,9 @@
 package Clases;
 
+import java.io.File;
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -19,15 +23,38 @@ public class Usuario {
     public Usuario izquierda;
     public Usuario derecha;
     public Red registroDeRed;
+    public int contadorScreen;
+    public ArrayList<ImageIcon> imagenes;
 
-    public Usuario(int item, String nombre) {
-        this.nombre = "";
-        this.valor = item;
+    public Usuario( int valor, String nombre) {
+        this.nombre = nombre;
+        this.valor = valor;
         this.izquierda = null;
         this.derecha = null;
         this.registroDeRed = null;
+        this.contadorScreen = 0;
+        this.imagenes = new ArrayList<>();
     }
 
+    public ArrayList<ImageIcon> getImagenes() {
+        return imagenes;
+    }
+
+    public void setImagenes(ArrayList<ImageIcon> imagenes) {
+        this.imagenes = imagenes;
+    }
+
+    
+
+    public int getContadorScreen() {
+        return contadorScreen;
+    }
+
+    public void setContadorScreen(int contadorScreen) {
+        this.contadorScreen = contadorScreen;
+    }
+    
+    
     public String getNombre() {
         return nombre;
     }

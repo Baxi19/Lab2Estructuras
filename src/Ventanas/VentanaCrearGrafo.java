@@ -8,10 +8,8 @@ package Ventanas;
 import Clases.*;
 import java.awt.AWTException;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Robot;
-import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
@@ -22,6 +20,7 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import sun.swing.ImageIconUIResource;
 
 
 /**
@@ -316,13 +315,24 @@ public class VentanaCrearGrafo extends javax.swing.JFrame{
     private javax.swing.JTextField origenTexField;
     private javax.swing.JTextField tiempoTextField;
     // End of variables declaration//GEN-END:variables
-
+public void contador(Usuario usuario){
+    int cantidadScreen = usuario.getContadorScreen();
+    cantidadScreen++;
+    usuario.setContadorScreen(cantidadScreen);
+     
+}
 public void capturarPantalla(String Nombre) throws AWTException, IOException {
-     BufferedImage captura = new Robot().createScreenCapture(new Rectangle(jPanel1.getX(),jPanel1.getY(), 560, 480) );
-     // Save as JPEG
-     File file = new File(Nombre + ".jpg");
-     ImageIO.write(captura, "jpg", file);
-     JOptionPane.showMessageDialog(null, "Diagrama de red guardado.");
+    
+    BufferedImage captura = new Robot().createScreenCapture(new Rectangle(jPanel1.getX(),jPanel1.getY(), 560, 480) );
+    contador(usuario);
+    // Save as JPEG
+    File file = new File("src/Screenshots",Nombre + ".jpg");
+    ImageIO.write(captura, "jpg", file);
+    ImageIcon imagen = new ImageIconUIResource(captura);
+    usuario.getImagenes().add(imagen);
+    JOptionPane.showMessageDialog(null, "Diagrama de red guardado.");
+     
+     
   }
 
 }

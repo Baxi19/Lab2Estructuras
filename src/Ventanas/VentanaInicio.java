@@ -199,7 +199,8 @@ public class VentanaInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonOffMouseClicked
 
     private void jButtonIngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonIngresarMouseClicked
-        
+        VentanaDiagramas vd = new VentanaDiagramas();
+        vd.setVisible(true);
         //Arbol.getInstance().verificarUsuario(Integer.parseInt(jPasswordFieldContraseña.getText()), jTextFieldNombre.getText());
     }//GEN-LAST:event_jButtonIngresarMouseClicked
 
