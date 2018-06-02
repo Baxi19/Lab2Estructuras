@@ -10,20 +10,22 @@ package Clases;
  *
  * @author Randald Villegas
  */
-public class Nodo {
+public class Usuario {
 
     /* Clase que contiene el hijo de izquierda y derecha del nodo actual y valor de valor */
-    /*Variables*/
-    String nombre;
-    int valor;
-    Nodo izquierda;
-    Nodo derecha;
+ /*Variables*/
+    private String nombre;
+    public int valor;
+    public Usuario izquierda;
+    public Usuario derecha;
+    public Red registroDeRed;
 
-    public Nodo(int valor, String nombre) {
-        this.nombre = nombre;
-        this.valor = valor;
+    public Usuario(int item, String nombre) {
+        this.nombre = "";
+        this.valor = item;
         this.izquierda = null;
         this.derecha = null;
+        this.registroDeRed = null;
     }
 
     public String getNombre() {
@@ -42,27 +44,19 @@ public class Nodo {
         this.valor = valor;
     }
 
-    public Nodo getIzquierda() {
-        return izquierda;
+    public Red getRegistroDeRed() {
+        return registroDeRed;
     }
 
-    public void setIzquierda(Nodo izquierda) {
-        this.izquierda = izquierda;
-    }
-
-    public Nodo getDerecha() {
-        return derecha;
-    }
-
-    public void setDerecha(Nodo derecha) {
-        this.derecha = derecha;
+    public void setRegistroDeRed(Red registroDeRed) {
+        this.registroDeRed = registroDeRed;
     }
 
     @Override
     public String toString() {
-        return "Nodo{" + "nombre=" + nombre + ", valor=" + valor + ", izquierda=" + izquierda + ", derecha=" + derecha + '}';
+        return "Usuario{" + "nombre=" + nombre + ", valor=" + valor + ", izquierda=" + izquierda + ", derecha=" + derecha + '}';
     }
-
-      
+    
+    
 }
 

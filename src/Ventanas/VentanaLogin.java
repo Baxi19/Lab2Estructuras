@@ -5,6 +5,9 @@
  */
 package Ventanas;
 
+import Clases.Arbol;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author toshib
@@ -16,6 +19,7 @@ public class VentanaLogin extends javax.swing.JFrame {
      */
     public VentanaLogin() {
         initComponents();
+        this.setSize(1000,600);
         setLocationRelativeTo(null);
     }
 
@@ -28,24 +32,203 @@ public class VentanaLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jButtonIngresar = new javax.swing.JButton();
+        jButtonOff = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jTextFieldNombre = new javax.swing.JTextField();
+        jPasswordFieldContraseña = new javax.swing.JPasswordField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/login.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jPanel2.setBackground(new java.awt.Color(40, 1, 75));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.setLayout(null);
+
+        jButtonIngresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/entrar.png"))); // NOI18N
+        jButtonIngresar.setBorder(null);
+        jButtonIngresar.setBorderPainted(false);
+        jButtonIngresar.setContentAreaFilled(false);
+        jButtonIngresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonIngresar.setRequestFocusEnabled(false);
+        jButtonIngresar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/entrar2.png"))); // NOI18N
+        jButtonIngresar.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/entrar2.png"))); // NOI18N
+        jButtonIngresar.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/entrar2.png"))); // NOI18N
+        jButtonIngresar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonIngresarMouseClicked(evt);
+            }
+        });
+        jPanel2.add(jButtonIngresar);
+        jButtonIngresar.setBounds(170, 480, 60, 60);
+
+        jButtonOff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/off1.png"))); // NOI18N
+        jButtonOff.setBorder(null);
+        jButtonOff.setBorderPainted(false);
+        jButtonOff.setContentAreaFilled(false);
+        jButtonOff.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonOff.setRequestFocusEnabled(false);
+        jButtonOff.setRolloverEnabled(false);
+        jButtonOff.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/off2.png"))); // NOI18N
+        jButtonOff.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/off2.png"))); // NOI18N
+        jButtonOff.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/off2.png"))); // NOI18N
+        jButtonOff.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonOffMouseClicked(evt);
+            }
+        });
+        jPanel2.add(jButtonOff);
+        jButtonOff.setBounds(320, 20, 60, 60);
+
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Registrarse");
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+        jPanel2.add(jLabel2);
+        jLabel2.setBounds(260, 540, 130, 50);
+
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(153, 148, 148));
+        jLabel3.setText("Iniciar Seción");
+        jPanel2.add(jLabel3);
+        jLabel3.setBounds(90, 70, 230, 100);
+
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Usuario");
+        jPanel2.add(jLabel4);
+        jLabel4.setBounds(40, 190, 170, 50);
+
+        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Contraseña");
+        jPanel2.add(jLabel5);
+        jLabel5.setBounds(40, 340, 170, 50);
+
+        jTextFieldNombre.setBackground(new java.awt.Color(40, 1, 75));
+        jTextFieldNombre.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jTextFieldNombre.setForeground(new java.awt.Color(255, 255, 255));
+        jTextFieldNombre.setText("Escriba su nombre");
+        jTextFieldNombre.setBorder(null);
+        jPanel2.add(jTextFieldNombre);
+        jTextFieldNombre.setBounds(40, 260, 330, 40);
+
+        jPasswordFieldContraseña.setBackground(new java.awt.Color(40, 1, 75));
+        jPasswordFieldContraseña.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jPasswordFieldContraseña.setForeground(new java.awt.Color(255, 255, 255));
+        jPasswordFieldContraseña.setText("jPasswordField1");
+        jPasswordFieldContraseña.setBorder(null);
+        jPanel2.add(jPasswordFieldContraseña);
+        jPasswordFieldContraseña.setBounds(40, 410, 330, 40);
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/line2.png"))); // NOI18N
+        jPanel2.add(jLabel6);
+        jLabel6.setBounds(40, 380, 330, 20);
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/line2.png"))); // NOI18N
+        jPanel2.add(jLabel7);
+        jLabel7.setBounds(40, 290, 330, 20);
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 0, 400, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonOffMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonOffMouseClicked
+      //Para salir del sistema
+        Arbol.getInstance().cerrarSistema();
+    }//GEN-LAST:event_jButtonOffMouseClicked
+
+    private void jButtonIngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonIngresarMouseClicked
+        Arbol.getInstance().verificarUsuario(Integer.parseInt(jPasswordFieldContraseña.getText()), jTextFieldNombre.getText());
+        
+    }//GEN-LAST:event_jButtonIngresarMouseClicked
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        VentanaRegistro vr = new VentanaRegistro();
+        vr.setVisible(true);
+        
+    }//GEN-LAST:event_jLabel2MouseClicked
     
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Windows (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(VentanaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(VentanaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(VentanaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(VentanaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new VentanaLogin().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonIngresar;
+    private javax.swing.JButton jButtonOff;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPasswordField jPasswordFieldContraseña;
+    private javax.swing.JTextField jTextFieldNombre;
     // End of variables declaration//GEN-END:variables
 }

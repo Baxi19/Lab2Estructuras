@@ -1,5 +1,6 @@
 package Clases;
 
+import Ventanas.VentanaLogin;
 import Ventanas.VentanaRegistro;
 
 
@@ -19,7 +20,7 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        VentanaRegistro ventana  = new VentanaRegistro();
+        VentanaLogin ventana  = new VentanaLogin();
         ventana.setVisible(true);
         
         

@@ -32,49 +32,70 @@ public class VentanaRegistro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        cedulaUsuario = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         nombreUsuario = new javax.swing.JTextField();
         jButtonAgregarUsuario = new javax.swing.JButton();
+        cedulaUsuario = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(cedulaUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 119, 29));
 
+        jPanel1.setBackground(new java.awt.Color(40, 1, 75));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4));
+        jPanel1.setLayout(null);
+
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Cedula:");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 101, 29));
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(70, 140, 60, 22);
 
-        jLabel2.setText("Nombre");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 101, 29));
-        getContentPane().add(nombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 119, 29));
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Nombre:");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(70, 90, 70, 22);
+        jPanel1.add(nombreUsuario);
+        nombreUsuario.setBounds(180, 90, 180, 30);
 
+        jButtonAgregarUsuario.setBackground(new java.awt.Color(40, 1, 75));
+        jButtonAgregarUsuario.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jButtonAgregarUsuario.setForeground(new java.awt.Color(255, 255, 255));
         jButtonAgregarUsuario.setText("Agregar");
+        jButtonAgregarUsuario.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonAgregarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAgregarUsuarioActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonAgregarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 92, 35));
+        jPanel1.add(jButtonAgregarUsuario);
+        jButtonAgregarUsuario.setBounds(210, 210, 120, 40);
+        jPanel1.add(cedulaUsuario);
+        cedulaUsuario.setBounds(180, 140, 180, 30);
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAgregarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarUsuarioActionPerformed
-        if(nombreUsuario.getText().isEmpty() | cedulaUsuario.getText().isEmpty())
-        {
+        if (nombreUsuario.getText().isEmpty() | cedulaUsuario.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Campos vacios");
-        }
-        else {
+        } else {
             String nombre = nombreUsuario.getText();
             int cedula = Integer.parseInt(cedulaUsuario.getText());
-            Arbol.getInstance().insertar(cedula,nombre);
+            Arbol.getInstance().insertar(cedula, nombre);
             System.out.println("Recorrido del árbol creado \n ");
             Arbol.getInstance().preOrden();
-            //VentanaInicio ven = new VentanaInicio();
-            //ven.setVisible(true);
-            
-            
+            if (Arbol.getInstance().isEncontrado()) {
+                JOptionPane.showMessageDialog(null, nombre + " Usuario no agregado");
+                Arbol.getInstance().setEncontrado(false);
+            } else {
+                JOptionPane.showMessageDialog(null, nombre + " agregado exitosamente");
+                Arbol.getInstance().setEncontrado(false);
+            }
         }
     }//GEN-LAST:event_jButtonAgregarUsuarioActionPerformed
 
@@ -84,6 +105,7 @@ public class VentanaRegistro extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAgregarUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField nombreUsuario;
     // End of variables declaration//GEN-END:variables
 }
