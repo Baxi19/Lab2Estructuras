@@ -206,6 +206,7 @@ public class VentanaInicio extends javax.swing.JFrame {
     private void jButtonIngresar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonIngresar1MouseClicked
        VentanaCrearGrafo vg = new VentanaCrearGrafo(Arbol.getInstance().getUsuarioAux());
        vg.setVisible(true);
+       //this.setVisible(false);
     }//GEN-LAST:event_jButtonIngresar1MouseClicked
 
     private void jButtonIngresar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonIngresar2MouseClicked

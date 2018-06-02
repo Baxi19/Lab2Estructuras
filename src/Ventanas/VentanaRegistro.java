@@ -95,6 +95,7 @@ public class VentanaRegistro extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(null, nombre + " agregado exitosamente");
                 Arbol.getInstance().setEncontrado(false);
+                this.dispose();
             }
         }
     }//GEN-LAST:event_jButtonAgregarUsuarioActionPerformed

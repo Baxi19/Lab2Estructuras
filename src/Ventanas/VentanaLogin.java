@@ -83,6 +83,11 @@ public class VentanaLogin extends javax.swing.JFrame {
                 jButtonIngresarMouseClicked(evt);
             }
         });
+        jButtonIngresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonIngresarActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButtonIngresar);
         jButtonIngresar.setBounds(170, 480, 60, 60);
 
@@ -92,7 +97,6 @@ public class VentanaLogin extends javax.swing.JFrame {
         jButtonOff.setContentAreaFilled(false);
         jButtonOff.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonOff.setRequestFocusEnabled(false);
-        jButtonOff.setRolloverEnabled(false);
         jButtonOff.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/off2.png"))); // NOI18N
         jButtonOff.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/off2.png"))); // NOI18N
         jButtonOff.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/off2.png"))); // NOI18N
@@ -154,7 +158,7 @@ public class VentanaLogin extends javax.swing.JFrame {
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/line2.png"))); // NOI18N
         jPanel2.add(jLabel6);
-        jLabel6.setBounds(40, 380, 330, 20);
+        jLabel6.setBounds(40, 440, 330, 20);
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/line2.png"))); // NOI18N
         jPanel2.add(jLabel7);
@@ -178,8 +182,13 @@ public class VentanaLogin extends javax.swing.JFrame {
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         VentanaRegistro vr = new VentanaRegistro();
         vr.setVisible(true);
+       // this.setVisible(false);
         
     }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jButtonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIngresarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonIngresarActionPerformed
     
     /**
      * @param args the command line arguments

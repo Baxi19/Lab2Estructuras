@@ -43,6 +43,7 @@ public class VentanaCrearGrafo extends javax.swing.JFrame{
     public VentanaCrearGrafo(Usuario usuario) {
        // jLabel1.setIcon(imagen);
         initComponents();
+        this.setLocationRelativeTo(null);
         this.usuario = usuario;
         this.red = new Red();
         MouseListener ml;
@@ -110,7 +111,7 @@ public class VentanaCrearGrafo extends javax.swing.JFrame{
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
