@@ -1,5 +1,7 @@
 package Clases;
 
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -13,11 +15,12 @@ package Clases;
 public class Arbol {
     /* Variables*/
     public static Arbol instance = null;
-    //Raiz del Arbol binario 
-    Nodo raiz;
+    //raiz del Arbol binario 
+    Nodo nodo;
+    boolean encontrado = false;
     /*Constructor*/
     private Arbol() {
-        raiz = null;
+        nodo = null;
     }
     /*Metodo para singleton*/
     public static Arbol getInstance() {
@@ -27,91 +30,99 @@ public class Arbol {
         return instance;
     }
     
+    /******************************************************************************/
     // Este método principalmente llama a eliminarNodo()
+    /******************************************************************************/
     public void eliminarValor(int valor) {
-        raiz = eliminarNodo(raiz, valor);
+        nodo = eliminarNodo(nodo, valor);
     }
 
     /* Una función recursiva para insertar un nuevo valor en Arbol de busqueda binaria */
-    public Nodo eliminarNodo(Nodo raiz, int valor) {
+    public Nodo eliminarNodo(Nodo nodo, int valor) {
         /* Caso base: si el árbol está vacío */
-        if (raiz == null) {
-            return raiz;
+        if (nodo == null) {
+            return nodo;
         }
 
         /* De lo contrario, repita por el Arbol*/
-        if (valor < raiz.valor) {
-            raiz.izquierda = eliminarNodo(raiz.izquierda, valor);
-        } else if (valor > raiz.valor) {
-            raiz.derecha = eliminarNodo(raiz.derecha, valor);
-        } //si el valor es igual que el valor de raiz, entonces este es el nodo
-        // que se va a eliminar
+        if (valor < nodo.valor) {
+            nodo.izquierda = eliminarNodo(nodo.izquierda, valor);
+        } else if (valor > nodo.valor) {
+            nodo.derecha = eliminarNodo(nodo.derecha, valor);
+        } //si el valor es igual que el valor de nodo, entonces este es el nodo
+        
         else {
             //nodo con un solo hijo o sin hijo
-            if (raiz.izquierda == null) {
-                return raiz.derecha;
-            } else if (raiz.derecha == null) {
-                return raiz.izquierda;
+            if (nodo.izquierda == null) {
+                return nodo.derecha;
+            } else if (nodo.derecha == null) {
+                return nodo.izquierda;
             }
 
             // nodo con dos hijos: obtenga el sucesor en orden (el más pequeño en el subárbol de derecha)
-            raiz.valor = valorMinimo(raiz.derecha);
+            nodo.valor = valorMinimo(nodo.derecha);
 
             // Eliminar el sucesor en orden
-            raiz.derecha = eliminarNodo(raiz.derecha, raiz.valor);
+            nodo.derecha = eliminarNodo(nodo.derecha, nodo.valor);
         }
 
-        return raiz;
+        return nodo;
     }
-
-    public  int valorMinimo(Nodo raiz) {
-        int menorValor = raiz.valor;
-        while (raiz.izquierda != null) {
-            menorValor = raiz.izquierda.valor;
-            raiz = raiz.izquierda;
+    
+    public  int valorMinimo(Nodo nodo) {
+        int menorValor = nodo.valor;
+        while (nodo.izquierda != null) {
+            menorValor = nodo.izquierda.valor;
+            nodo = nodo.izquierda;
         }
         return menorValor;
     }
-
+    /******************************************************************************/
     // Este método principalmente llama a insertarValorRecibido()
-    public void insertar(int valor) {
-        raiz = insertarValorRecibido(raiz, valor);
+    /******************************************************************************/
+    public void insertar(int valor, String nombre) {
+        nodo = insertarValorRecibido(nodo, valor, nombre);
     }
 
     /* Una función recursiva para insertar un nuevo valor en Arbol de busqueda Binaria */
-    public Nodo insertarValorRecibido(Nodo raiz, int valor) {
+    public Nodo insertarValorRecibido(Nodo nodo, int valor, String nombre) {
 
         /* Si el árbol está vacío, devuelve un nuevo nodo*/
-        if (raiz == null) {
-            raiz = new Nodo(valor);
-            return raiz;
+        if (nodo == null) {
+            nodo = new Nodo(valor, nombre);
+            return nodo;
         }
-
+        /*Si el numero de cedula existe, no lo deja registrarse*/
+        if (valor == nodo.getValor()) {
+            JOptionPane.showMessageDialog(null, "Este usuario ya esta registrado");
+            return nodo; 
+        }
         /* De lo contrario, repita por el Arbol */
-        if (valor < raiz.valor) {
-            raiz.izquierda = insertarValorRecibido(raiz.izquierda, valor);
-        } else if (valor > raiz.valor) {
-            raiz.derecha = insertarValorRecibido(raiz.derecha, valor);
+        if (valor < nodo.valor) {
+            nodo.izquierda = insertarValorRecibido(nodo.izquierda, valor,nombre);
+        } else if (valor > nodo.valor) {
+            nodo.derecha = insertarValorRecibido(nodo.derecha, valor, nombre );
         }
 
         /* devolver el puntero del nodo (sin modificar) */
-        return raiz;
+        return nodo;
     }
-
+    /******************************************************************************/
     // Este método principalmente llama a recorridoPreOrden()
+    /******************************************************************************/
     public void preOrden() {
-        recorridoPreOrden(raiz);
+        recorridoPreOrden(nodo);
     }
 
-    // Una función de utilidad para hacer el recorrido inorden de Arbol de busqueda binaria
-    public void recorridoPreOrden(Nodo raiz) {
-        if (raiz != null) {
-            recorridoPreOrden(raiz.izquierda);
-            System.out.print(raiz.valor + " ");
-            recorridoPreOrden(raiz.derecha);
+    // Una función de utilidad para hacer el recorrido en preorden de Arbol de busqueda binaria
+    public void recorridoPreOrden(Nodo nodo) {
+        if (nodo != null) {
+            
+            recorridoPreOrden(nodo.izquierda);
+            System.out.print("Nombre :"+ nodo.getNombre() + " "+ nodo.valor + " | ");
+            recorridoPreOrden(nodo.derecha);
+            
         }
     }
-    
-    
     
 }

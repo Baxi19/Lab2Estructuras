@@ -1,5 +1,7 @@
 package Clases;
 
+import Ventanas.VentanaRegistro;
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,6 +19,9 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        VentanaRegistro ventana  = new VentanaRegistro();
+        ventana.setVisible(true);
+        
         
         // TODO code application logic here
         //Arbol arbol = new Arbol();
@@ -30,7 +35,7 @@ public class Main {
          */
         //El primero es la raiz
         
-        Arbol.getInstance().insertar(50);
+       /* Arbol.getInstance().insertar(50);
         //
         Arbol.getInstance().insertar(30);
         Arbol.getInstance().insertar(70);
@@ -55,7 +60,7 @@ public class Main {
         System.out.println("\n Eliminamos el 50");
         Arbol.getInstance().eliminarValor(50);
         System.out.println("Recorrido del árbol al modificado");
-        Arbol.getInstance().preOrden();
+        Arbol.getInstance().preOrden();   */
     }
     
 }
