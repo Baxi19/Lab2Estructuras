@@ -1,6 +1,8 @@
 package Clases;
 
 import Ventanas.VentanaInicio;
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /*
@@ -20,11 +22,13 @@ public class Arbol {
     Usuario usuario;
     Usuario usuarioAux;
     boolean encontrado ;
+    public ArrayList<ImageIcon> imagenes;
     /*Constructor*/
     private Arbol() {
         usuario = null;
         this.encontrado = false;
         this.usuarioAux = usuarioAux;
+        this.imagenes = new ArrayList<>();
     }
     /*Metodo para singleton*/
     public static Arbol getInstance() {
@@ -33,7 +37,13 @@ public class Arbol {
         }
         return instance;
     }
+    public ArrayList<ImageIcon> getImagenes() {
+        return imagenes;
+    }
 
+    public void setImagenes(ArrayList<ImageIcon> imagenes) {
+        this.imagenes = imagenes;
+    }
     public boolean isEncontrado() {
         return encontrado;
     }

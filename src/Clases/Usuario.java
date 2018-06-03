@@ -24,7 +24,7 @@ public class Usuario {
     public Usuario derecha;
     public Red registroDeRed;
     public int contadorScreen;
-    public ArrayList<ImageIcon> imagenes;
+    
 
     public Usuario( int valor, String nombre) {
         this.nombre = nombre;
@@ -33,16 +33,10 @@ public class Usuario {
         this.derecha = null;
         this.registroDeRed = null;
         this.contadorScreen = 0;
-        this.imagenes = new ArrayList<>();
+        
     }
 
-    public ArrayList<ImageIcon> getImagenes() {
-        return imagenes;
-    }
-
-    public void setImagenes(ArrayList<ImageIcon> imagenes) {
-        this.imagenes = imagenes;
-    }
+    
 
     
 

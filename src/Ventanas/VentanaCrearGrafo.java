@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -34,6 +35,7 @@ public class VentanaCrearGrafo extends javax.swing.JFrame{
     boolean bandera = false;
     ImageIcon ic;
     private Usuario usuario;
+    
     // public ImageIcon imagen = new ImageIcon(getClass().getResource("RouterIcon.png"));
     /**
      * Creates new form VentanaCrearGrafo
@@ -234,7 +236,8 @@ public class VentanaCrearGrafo extends javax.swing.JFrame{
                     catch(NumberFormatException exz){
                         JOptionPane.showMessageDialog(rootPane, "Digite un valor numérico en el tiempo de conección.");
                         return;
-                    }                   
+                    }   
+                    
                     red.insertarConeccion(origen, destino, tiempo);
                     JOptionPane.showMessageDialog(rootPane, "Conección de " + origen.getId() + " a " + destino.getId() + " creada con éxito.");
                     Graphics g = lienzo.getGraphics();
@@ -313,6 +316,7 @@ public class VentanaCrearGrafo extends javax.swing.JFrame{
     private void destinoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_destinoTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_destinoTextFieldActionPerformed
+    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -334,7 +338,8 @@ public class VentanaCrearGrafo extends javax.swing.JFrame{
     private javax.swing.JTextField origenTexField;
     private javax.swing.JTextField tiempoTextField;
     // End of variables declaration//GEN-END:variables
-public void contador(Usuario usuario){
+
+    public void contador(Usuario usuario){
     int cantidadScreen = usuario.getContadorScreen();
     cantidadScreen++;
     usuario.setContadorScreen(cantidadScreen);
@@ -349,7 +354,7 @@ public void capturarPantalla(String Nombre) throws AWTException, IOException {
     File file = new File("src/Screenshots",Nombre + ".jpg");
     ImageIO.write(captura, "jpg", file);
     ImageIcon imagen = new ImageIconUIResource(captura);
-    usuario.getImagenes().add(imagen);
+    Arbol.getInstance().getImagenes().add(imagen);
     JOptionPane.showMessageDialog(null, "Diagrama de red guardado.");
      
      

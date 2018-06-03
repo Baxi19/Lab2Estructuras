@@ -46,8 +46,9 @@ public class VentanaInicio extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         labelUsuario = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jButtonIngresar4 = new javax.swing.JButton();
         jButtonIngresar = new javax.swing.JButton();
         jButtonOff = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -57,6 +58,7 @@ public class VentanaInicio extends javax.swing.JFrame {
         jButtonIngresar1 = new javax.swing.JButton();
         jButtonIngresar2 = new javax.swing.JButton();
         jButtonIngresar3 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -76,9 +78,9 @@ public class VentanaInicio extends javax.swing.JFrame {
         jPanel1.add(jLabel3);
         jLabel3.setBounds(130, 0, 230, 100);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoInicio.png"))); // NOI18N
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(0, 0, 600, 600);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoInicio.png"))); // NOI18N
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(0, 0, 600, 600);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 600, 600);
@@ -86,6 +88,28 @@ public class VentanaInicio extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(40, 1, 75));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.setLayout(null);
+
+        jButtonIngresar4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logout.png"))); // NOI18N
+        jButtonIngresar4.setBorder(null);
+        jButtonIngresar4.setBorderPainted(false);
+        jButtonIngresar4.setContentAreaFilled(false);
+        jButtonIngresar4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonIngresar4.setRequestFocusEnabled(false);
+        jButtonIngresar4.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logout2.png"))); // NOI18N
+        jButtonIngresar4.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logout2.png"))); // NOI18N
+        jButtonIngresar4.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logout2.png"))); // NOI18N
+        jButtonIngresar4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonIngresar4MouseClicked(evt);
+            }
+        });
+        jButtonIngresar4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonIngresar4ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButtonIngresar4);
+        jButtonIngresar4.setBounds(310, 510, 60, 60);
 
         jButtonIngresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/entrar.png"))); // NOI18N
         jButtonIngresar.setBorder(null);
@@ -131,9 +155,9 @@ public class VentanaInicio extends javax.swing.JFrame {
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Ver Diagramas");
+        jLabel5.setText("Cerrar Seción");
         jPanel2.add(jLabel5);
-        jLabel5.setBounds(30, 400, 250, 50);
+        jLabel5.setBounds(30, 520, 250, 50);
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -210,6 +234,13 @@ public class VentanaInicio extends javax.swing.JFrame {
         jPanel2.add(jButtonIngresar3);
         jButtonIngresar3.setBounds(310, 300, 60, 60);
 
+        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Ver Diagramas");
+        jPanel2.add(jLabel8);
+        jLabel8.setBounds(30, 400, 250, 50);
+
         getContentPane().add(jPanel2);
         jPanel2.setBounds(600, 0, 400, 600);
 
@@ -252,7 +283,8 @@ public class VentanaInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonIngresar2MouseClicked
 
     private void jButtonIngresar3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonIngresar3MouseClicked
-        // TODO add your handling code here:
+        VentanaProfundidad vP = new VentanaProfundidad(usuario);
+        vP.setVisible(true);
     }//GEN-LAST:event_jButtonIngresar3MouseClicked
 
     private void jButtonIngresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIngresar1ActionPerformed
@@ -262,19 +294,31 @@ public class VentanaInicio extends javax.swing.JFrame {
     private void jButtonIngresar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIngresar2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonIngresar2ActionPerformed
+
+    private void jButtonIngresar4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonIngresar4MouseClicked
+        VentanaLogin vl = new VentanaLogin();
+        vl.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonIngresar4MouseClicked
+
+    private void jButtonIngresar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIngresar4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonIngresar4ActionPerformed
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonIngresar;
     private javax.swing.JButton jButtonIngresar1;
     private javax.swing.JButton jButtonIngresar2;
     private javax.swing.JButton jButtonIngresar3;
+    private javax.swing.JButton jButtonIngresar4;
     private javax.swing.JButton jButtonOff;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel labelUsuario;

@@ -6,6 +6,7 @@
 package Clases;
 
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 /**
@@ -13,13 +14,14 @@ import javax.swing.ImageIcon;
  * @author Fabián
  */
 public class Red {
-    private Router grafo;
+    public Router grafo;
     private ImageIcon imagen;
-    
+    public ArrayList<String> nombreRouters;
     // constructor
     public Red() {
         this.grafo = null;
         this.imagen = null;
+        this.nombreRouters = new ArrayList<>();
         
     }
 
@@ -152,5 +154,16 @@ public class Red {
             }
             aux = aux.getSigRouter();
         }
+    }
+    //metodo para guardar arraylis de string 
+    public ArrayList<String> obtenerNombresDeRouters(){
+        Router aux = grafo;
+        ArrayList<String> listaNombres = new ArrayList<>();
+        while(aux != null){
+            listaNombres.add(aux.getId());
+            aux = aux.getSigRouter();
+        }
+        
+        return listaNombres;
     }
 }
