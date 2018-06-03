@@ -143,7 +143,6 @@ public class VentanaLogin extends javax.swing.JFrame {
         jTextFieldNombre.setBackground(new java.awt.Color(40, 1, 75));
         jTextFieldNombre.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jTextFieldNombre.setForeground(new java.awt.Color(255, 255, 255));
-        jTextFieldNombre.setText("Escriba su nombre");
         jTextFieldNombre.setBorder(null);
         jPanel2.add(jTextFieldNombre);
         jTextFieldNombre.setBounds(40, 260, 330, 40);
@@ -151,7 +150,6 @@ public class VentanaLogin extends javax.swing.JFrame {
         jPasswordFieldContraseña.setBackground(new java.awt.Color(40, 1, 75));
         jPasswordFieldContraseña.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jPasswordFieldContraseña.setForeground(new java.awt.Color(255, 255, 255));
-        jPasswordFieldContraseña.setText("jPasswordField1");
         jPasswordFieldContraseña.setBorder(null);
         jPanel2.add(jPasswordFieldContraseña);
         jPasswordFieldContraseña.setBounds(40, 410, 330, 40);
@@ -176,7 +174,6 @@ public class VentanaLogin extends javax.swing.JFrame {
 
     private void jButtonIngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonIngresarMouseClicked
         Arbol.getInstance().verificarUsuario(Integer.parseInt(jPasswordFieldContraseña.getText()), jTextFieldNombre.getText());
-        
     }//GEN-LAST:event_jButtonIngresarMouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked

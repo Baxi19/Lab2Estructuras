@@ -6,6 +6,15 @@
 package Ventanas;
 
 import Clases.Arbol;
+import Clases.*;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,14 +22,16 @@ import javax.swing.JOptionPane;
  * @author toshib
  */
 public class VentanaInicio extends javax.swing.JFrame {
-
+    private Usuario usuario;
     /**
      * Creates new form VentanaLogin
      */
-    public VentanaInicio() {
+    public VentanaInicio(Usuario usuario) {
         initComponents();
         this.setSize(1000,600);
         setLocationRelativeTo(null);
+        this.usuario = usuario;
+        labelUsuario.setText(usuario.getNombre());
     }
 
     /**
@@ -33,11 +44,12 @@ public class VentanaInicio extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        labelUsuario = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jButtonIngresar = new javax.swing.JButton();
         jButtonOff = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -48,22 +60,28 @@ public class VentanaInicio extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(null);
+
+        jPanel1.setLayout(null);
+
+        labelUsuario.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        labelUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        labelUsuario.setText("Bienvenido");
+        jPanel1.add(labelUsuario);
+        labelUsuario.setBounds(310, 0, 230, 100);
+
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Bienvenido");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(130, 0, 230, 100);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoInicio.png"))); // NOI18N
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(0, 0, 600, 600);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 0, 600, 600);
 
         jPanel2.setBackground(new java.awt.Color(40, 1, 75));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -102,12 +120,6 @@ public class VentanaInicio extends javax.swing.JFrame {
         });
         jPanel2.add(jButtonOff);
         jButtonOff.setBounds(320, 20, 60, 60);
-
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(153, 148, 148));
-        jLabel3.setText("Bienvenido");
-        jPanel2.add(jLabel3);
-        jLabel3.setBounds(90, 20, 230, 100);
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -151,6 +163,11 @@ public class VentanaInicio extends javax.swing.JFrame {
                 jButtonIngresar1MouseClicked(evt);
             }
         });
+        jButtonIngresar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonIngresar1ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButtonIngresar1);
         jButtonIngresar1.setBounds(310, 120, 60, 60);
 
@@ -166,6 +183,11 @@ public class VentanaInicio extends javax.swing.JFrame {
         jButtonIngresar2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonIngresar2MouseClicked(evt);
+            }
+        });
+        jButtonIngresar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonIngresar2ActionPerformed(evt);
             }
         });
         jPanel2.add(jButtonIngresar2);
@@ -188,7 +210,8 @@ public class VentanaInicio extends javax.swing.JFrame {
         jPanel2.add(jButtonIngresar3);
         jButtonIngresar3.setBounds(310, 300, 60, 60);
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 0, 400, 600));
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(600, 0, 400, 600);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -205,55 +228,41 @@ public class VentanaInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonIngresarMouseClicked
 
     private void jButtonIngresar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonIngresar1MouseClicked
-       VentanaCrearGrafo vg = new VentanaCrearGrafo(Arbol.getInstance().getUsuarioAux());
-       vg.setVisible(true);
-       //this.setVisible(false);
+        if(usuario.registroDeRed == null){
+             VentanaCrearGrafo vg = new VentanaCrearGrafo(Arbol.getInstance().getUsuarioAux());
+             vg.setVisible(true);
+        }
+        else{
+            JOptionPane.showMessageDialog(rootPane, "Ud no puede tener más de un digrama de red.");
+        }
+       
     }//GEN-LAST:event_jButtonIngresar1MouseClicked
 
     private void jButtonIngresar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonIngresar2MouseClicked
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            usuario.registroDeRed = null;
+            Path p1 = Paths.get("src/Screenshots/" + usuario.getNombre() + ".jpg");
+            Files.deleteIfExists(p1);
+            JOptionPane.showMessageDialog(rootPane, "Diagrama de red eliminado con éxito.");
+        } catch (IOException ex) {
+            Logger.getLogger(VentanaInicio.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(rootPane, "Ud no posee ningún diagrama de red.");
+        }
     }//GEN-LAST:event_jButtonIngresar2MouseClicked
 
     private void jButtonIngresar3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonIngresar3MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonIngresar3MouseClicked
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Windows (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaInicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaInicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaInicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaInicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VentanaInicio().setVisible(true);
-            }
-        });
-    }
+    private void jButtonIngresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIngresar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonIngresar1ActionPerformed
 
+    private void jButtonIngresar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIngresar2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonIngresar2ActionPerformed
+ 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonIngresar;
     private javax.swing.JButton jButtonIngresar1;
@@ -268,5 +277,6 @@ public class VentanaInicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel labelUsuario;
     // End of variables declaration//GEN-END:variables
 }

@@ -167,7 +167,7 @@ public class Arbol {
     // Este método es para verificar los datos y ingresar al juego
     /******************************************************************************/
     public void verificarUsuario(int valor, String nombre) {
-        usuario = verificarValorRecibido(usuario, valor, nombre);
+        verificarValorRecibido(usuario, valor, nombre);
     }
     
     public Usuario verificarValorRecibido(Usuario usuario, int valor, String nombre){
@@ -179,7 +179,7 @@ public class Arbol {
         /*Si el numero de cedula existe, no lo deja registrarse*/
         if (valor == usuario.getValor()) {
             Arbol.getInstance().setUsuarioAux(usuario); 
-            VentanaInicio vn = new VentanaInicio();
+            VentanaInicio vn = new VentanaInicio(usuario);
             vn.setVisible(true);
             return usuario; 
         }

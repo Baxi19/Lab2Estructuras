@@ -89,5 +89,68 @@ public class Red {
         }                                                      //si se sale del ciclo...
         return null;                                           // retorna null en señal de que no se encontro el arco
     }
+    
+    
+    // Método para eliminar un arco de un grafo
+   public boolean eliminarConeccion(Router origen, Router destino){ // recibe por parametros el origen y el destino que conforman el arco
+        if(origen.getSigConeccion()==null){   // si el origen no tiene arcos...
+            System.out.println("No hay arcos"); // imprime no hay arcos en consola
+            return false;}  // retorna false en señal que no se eliminó
+        if(origen.getSigConeccion().getDestino() == destino){ // si el primer arco de la sublista es el arco a borrar...
+            origen.setSigConeccion(origen.getSigConeccion().getSigConeccion()); // desenlaza el arco de los 
+            System.out.println("Arco " + origen.getId() + " --> " + destino.getId() + " eliminado."); // imprime mensaje de borrado en consola
+            return true;  // retorna true en señal que fue eliminado
+        } // si no cumple ninguna de estas dos condiciones...
+         Coneccion aux = origen.getSigConeccion().getSigConeccion();  // aux guarda la posición siguiente del inicio
+         Coneccion anterior = origen.getSigConeccion(); // anterior sería el inicio de la lista
+         while(aux != null){ // recorre la sublista de arcos en un ciclo sin contar el inicio de la sublista
+            if(aux.getDestino() == destino){ // si el destino del actual aux es igual al destino del arco a borrar
+                anterior.setSigConeccion(aux.getSigConeccion()); // la posicion anterior apunta al siguiente del que se va a eliminar
+                System.out.println("Arco " + origen.getId() + " --> " + destino.getId() + " eliminado."); // imprime mensaje de borrado en consola
+                return true; // retorna true en señal que se elimino el arco
+            } 
+            anterior=aux; // actualiza aux y anterior para continuar el ciclo
+            aux =aux.getSigConeccion();
+         }
+         return false;
+    }
 
+    public boolean eliminarRouter(String nombre) {
+        Router vertice = grafo;
+        limpiarArcos(vertice);
+        if(vertice == null){
+            return false;
+        }
+        if(vertice.getId().equals(nombre)){
+            grafo = vertice.getSigRouter();
+            return true;
+        }
+        Router aux = grafo.getSigRouter();
+        Router ant = grafo.getSigRouter().getSigRouter();
+        while (aux != null) {
+            if (aux.getId().equals(nombre)) {
+                ant.setSigRouter(aux.getSigRouter());
+                System.out.println("borrado"); // imprime en consola mensaje de borrado
+                return true; // retorna true en señal que se elimino el arco
+            }
+            aux = aux.getSigRouter();
+            ant = aux;
+        }
+        return false;
+
+    }
+    
+    public void limpiarArcos(Router vertice){
+        Router aux = grafo;
+        while(aux != null){
+            Coneccion temp = aux.getSigConeccion();
+            while(temp != null){
+                if(temp.getDestino() == vertice){
+                    eliminarConeccion(aux, vertice);
+                }
+                temp = temp.getSigConeccion();
+            }
+            aux = aux.getSigRouter();
+        }
+    }
 }

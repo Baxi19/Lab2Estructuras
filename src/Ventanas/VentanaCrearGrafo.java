@@ -19,6 +19,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import sun.swing.ImageIconUIResource;
 
@@ -45,6 +46,7 @@ public class VentanaCrearGrafo extends javax.swing.JFrame{
         this.setLocationRelativeTo(null);
         this.usuario = usuario;
         this.red = new Red();
+        setLocationRelativeTo(this);
         MouseListener ml;
          ml = new MouseListener() {
              @Override
@@ -109,10 +111,15 @@ public class VentanaCrearGrafo extends javax.swing.JFrame{
         jButton1 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(40, 1, 75));
+        setPreferredSize(new java.awt.Dimension(920, 505));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(40, 1, 75));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.setLayout(null);
 
@@ -120,13 +127,16 @@ public class VentanaCrearGrafo extends javax.swing.JFrame{
         jPanel1.add(lienzo);
         lienzo.setBounds(22, 20, 520, 440);
 
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Diagrama de red");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(230, 0, 120, 20);
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, 560, 480));
+        jPanel1.getAccessibleContext().setAccessibleDescription("");
 
-        jLabel2.setText("¿Agregar Routers?");
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Agregar Router ");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 120, 30));
 
         jButton2.setText("Crear conección");
@@ -135,7 +145,7 @@ public class VentanaCrearGrafo extends javax.swing.JFrame{
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, 170, 30));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 140, 30));
 
         jButton3.setText("Ayuda");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -145,12 +155,15 @@ public class VentanaCrearGrafo extends javax.swing.JFrame{
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 100, -1));
 
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Tiempo de conección:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 140, 30));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 140, 30));
 
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Router  destino:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 130, 30));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 130, 30));
 
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Router origen:");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 120, 30));
 
@@ -159,8 +172,8 @@ public class VentanaCrearGrafo extends javax.swing.JFrame{
                 destinoTextFieldActionPerformed(evt);
             }
         });
-        getContentPane().add(destinoTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 140, 30));
-        getContentPane().add(tiempoTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 140, 30));
+        getContentPane().add(destinoTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 140, 30));
+        getContentPane().add(tiempoTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, 140, 30));
         getContentPane().add(origenTexField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 140, 30));
 
         jButton4.setText("Listo");
@@ -194,6 +207,9 @@ public class VentanaCrearGrafo extends javax.swing.JFrame{
             }
         });
         getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 430, 100, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/2089-web-2560x1600-abstract-wallpaper.jpg"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-700, -200, 1060, 830));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -258,9 +274,11 @@ public class VentanaCrearGrafo extends javax.swing.JFrame{
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         try {
             // TODO add your handling code here:
-            Graphics g = lienzo.getGraphics();
             usuario.setRegistroDeRed(red);
-            capturarPantalla(usuario.getNombre());
+            capturarPantalla(Integer.toString(usuario.getValor()));
+            VentanaInicio vInicio = new VentanaInicio(usuario);
+            vInicio.setVisible(true);
+            this.dispose();
         } catch (AWTException ex) {
             Logger.getLogger(VentanaCrearGrafo.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -307,6 +325,7 @@ public class VentanaCrearGrafo extends javax.swing.JFrame{
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -322,8 +341,9 @@ public void contador(Usuario usuario){
      
 }
 public void capturarPantalla(String Nombre) throws AWTException, IOException {
-    
-    BufferedImage captura = new Robot().createScreenCapture(new Rectangle(jPanel1.getX(),jPanel1.getY(), 560, 480) );
+    double x = jPanel1.getLocationOnScreen().getX();
+    double y = jPanel1.getLocationOnScreen().getY();
+    BufferedImage captura = new Robot().createScreenCapture(new Rectangle((int)x,(int)y, 560, 480));
     contador(usuario);
     // Save as JPEG
     File file = new File("src/Screenshots",Nombre + ".jpg");
